@@ -30,4 +30,16 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    /*RxKotlin*/
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+
+    /*Dagger 2*/
+    implementation 'com.google.dagger:dagger:2.22'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.22'
+
+    /*Mosby*/
+    implementation 'com.hannesdorfmann.mosby3:mvi:3.1.1'       // Model-View-Intent
+    implementation 'com.hannesdorfmann.mosby3:mvp:3.1.1'       // Plain MVP
+    implementation 'com.hannesdorfmann.mosby3:viewstate:3.1.1' // MVP + ViewState support
 }
