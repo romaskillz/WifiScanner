@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/item_padding"
+    app:cardCornerRadius="@dimen/item_corner_radius">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="@dimen/wifi_item_image_width"
+            android:layout_height="@dimen/wifi_item_image_height"
+            android:src="@drawable/ic_wifi" />
+
+        <TextView
+            android:id="@+id/item_wifi_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="@dimen/item_text_size"
+            tools:text="WIFI NAME" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+

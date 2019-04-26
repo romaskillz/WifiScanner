@@ -41,5 +41,7 @@ dependencies {
     /*Mosby*/
     implementation 'com.hannesdorfmann.mosby3:mvi:3.1.1'       // Model-View-Intent
     implementation 'com.hannesdorfmann.mosby3:mvp:3.1.1'       // Plain MVP
-    implementation 'com.hannesdorfmann.mosby3:viewstate:3.1.1' // MVP + ViewState support
+    implementation 'com.hannesdorfmann.mosby3:viewstate:3.1.1'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'// MVP + ViewState support
 }
