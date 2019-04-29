@@ -7,21 +7,24 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.wifi.ScanResult
+import android.net.wifi.WifiConfiguration
 import android.net.wifi.WifiManager
+import com.example.roman.wifiscanner.wifi.Constants.EMPTY_STRING
+import com.example.roman.wifiscanner.wifi.Constants.QUOTES
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
+import com.example.roman.wifiscanner.wifi.wifistate.WifiNetworkType
 import com.example.roman.wifiscanner.wifi.wifistate.WifiState
 import com.example.roman.wifiscanner.wifi.wifistate.WifiStateEvent
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.disposables.Disposables
+import org.apache.commons.lang3.StringUtils
 
 import javax.inject.Inject
 
 class ScannerService @Inject constructor(private val mContext: Context) : IWifiScanner {
 
-    companion object {
-        private val SECURITY_MODES = arrayOf("WEP", "WPA", "WPA2", "WPA_EAP", "IEEE8021X")
-    }
+    val SECURITY_MODES = arrayOf("WEP", "WPA", "WPA2", "WPA_EAP", "IEEE8021X")
 
     override fun scan(): Single<List<WifiData>> {
         return Single.create<List<ScanResult>> { emitter ->
@@ -61,7 +64,7 @@ class ScannerService @Inject constructor(private val mContext: Context) : IWifiS
             }.toList()
     }
 
-    override fun observeWiFiOnOffStatus(): Observable<WifiStateEvent> {
+    override fun observeWifiOnOffStatus(): Observable<WifiStateEvent> {
         return Observable.create<WifiStateEvent> { emitter ->
             val wifiManager = mContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
             val receiver = object : BroadcastReceiver() {
@@ -84,7 +87,7 @@ class ScannerService @Inject constructor(private val mContext: Context) : IWifiS
         }
     }
 
-    override fun observeWiFiConnectionStatus(): Observable<WifiStateEvent> {
+    override fun observeWifiConnectionStatus(): Observable<WifiStateEvent> {
         return Observable.create<WifiStateEvent> { emitter ->
             val connectivityManager = mContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val receiver = object : BroadcastReceiver() {
@@ -100,22 +103,56 @@ class ScannerService @Inject constructor(private val mContext: Context) : IWifiS
                 }
             }
             mContext.registerReceiver(receiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
-            emitter.setDisposable(
-                Disposables.fromAction
-                {
-                    mContext.unregisterReceiver(receiver)
-                })
+            emitter.setDisposable(Disposables.fromAction
+            {
+                mContext.unregisterReceiver(receiver)
+            })
         }
     }
 
     override fun checkWifiStatus(): Observable<WifiStateEvent> {
-        return observeWiFiOnOffStatus()
+        return observeWifiOnOffStatus()
             .switchMap { value ->
                 if (value == WifiStateEvent(WifiState.ON)) {
-                    observeWiFiConnectionStatus()
+                    observeWifiConnectionStatus()
                 } else {
                     Observable.empty()
                 }
             }
+    }
+
+    override fun getCurrentSsid(): String {
+        var ssid: String?
+        val connManager = mContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connManager.activeNetworkInfo
+        return if (networkInfo != null && networkInfo.type == ConnectivityManager.TYPE_WIFI && networkInfo.isConnected) {
+            val wifiManager = mContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+            val connectionInfo = wifiManager.connectionInfo
+            ssid = connectionInfo.ssid ?: EMPTY_STRING
+            if (!StringUtils.isBlank(ssid)) {
+                ssid = ssid.replace(QUOTES, EMPTY_STRING)
+            }
+            ssid
+        } else {
+            EMPTY_STRING
+        }
+    }
+
+    override fun connectToSelected(ssid: String, pass: String, type: WifiNetworkType) {
+        val conf = WifiConfiguration()
+        val wifiManager: WifiManager = mContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+        if (type == WifiNetworkType.OPEN) {
+            conf.SSID = QUOTES + ssid + QUOTES
+            conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE)
+        } else {
+            conf.SSID = QUOTES + ssid + QUOTES
+            conf.preSharedKey = QUOTES + pass + QUOTES
+            conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK)
+        }
+
+        val id = wifiManager.addNetwork(conf)
+        wifiManager.disconnect()
+        wifiManager.enableNetwork(id, true)
+        wifiManager.reconnect()
     }
 }

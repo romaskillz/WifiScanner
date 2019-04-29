@@ -1,4 +1,4 @@
-package com.example.roman.wifiscanner.fragment_scan
+package com.example.roman.wifiscanner.fragments.fragment_scan
 
 import com.hannesdorfmann.mosby3.mvp.MvpView
 
