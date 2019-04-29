@@ -19,7 +19,7 @@ class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(),
     }
 
     fun startScan() {
-        //TODO("not implemented") presenter.startScan()
+
     }
 
     fun onItemClick() {
