@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="@dimen/wifi_item_image_width"
             android:layout_height="@dimen/wifi_item_image_height"
-            android:src="@drawable/ic_wifi" />
+            android:src="@drawable/ic_wif_best_signal" />
 
         <TextView
             android:id="@+id/item_wifi_name"

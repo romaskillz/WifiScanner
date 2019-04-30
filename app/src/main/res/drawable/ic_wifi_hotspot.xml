@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="@dimen/ic_title_modal_width"
-    android:height="@dimen/ic_title_modal_height"
+    android:width="@dimen/ic_wifi_height"
+    android:height="@dimen/ic_wifi_height"
     android:viewportWidth="72"
     android:viewportHeight="72">
 
@@ -12,9 +12,9 @@
             android:fillType="evenOdd"
             android:pathData="M 35 0 C 54.3299662441 0 70 15.6700337559 70 35 C 70 54.3299662441 54.3299662441 70 35 70 C 15.6700337559 70 0 54.3299662441 0 35 C 0 15.6700337559 15.6700337559 0 35 0 Z"
             android:strokeWidth="2"
-            android:strokeColor="@color/standard_iсon_color" />
+            android:strokeColor="@color/ic_wifi_color" />
         <path
-            android:fillColor="@color/standard_iсon_color"
+            android:fillColor="@color/ic_wifi_color"
             android:pathData="M35.5 58.609c14.063 0 25.5-11.437 25.5-25.5 0-9.154-4.825-17.182-12.086-21.675a1.706 1.706 0 1 0-1.806 2.895C53.403 18.225 57.6 25.15 57.6 33.11c0 12.226-9.874 22.1-22.1 22.1s-22.1-9.874-22.1-22.1c0-7.96 4.197-14.884 10.492-18.78a1.706 1.706 0 1 0-1.806-2.895C14.825 15.927 10 23.954 10 33.109c0 14.063 11.437 25.5 25.5 25.5zm0-10.2c8.43 0 15.3-6.87 15.3-15.3 0-4.725-2.145-8.962-5.525-11.767a1.707 1.707 0 1 0-2.178 2.63c2.632 2.184 4.303 5.44 4.303 9.137 0 6.592-5.308 11.9-11.9 11.9-6.592 0-11.9-5.308-11.9-11.9 0-3.698 1.671-6.953 4.303-9.138a1.707 1.707 0 1 0-2.178-2.63A15.258 15.258 0 0 0 20.2 33.11c0 8.43 6.87 15.3 15.3 15.3zm0-9.35c3.266 0 5.95-2.684 5.95-5.95s-2.684-5.95-5.95-5.95-5.95 2.684-5.95 5.95 2.684 5.95 5.95 5.95zm0 0c3.266 0 5.95-2.684 5.95-5.95s-2.684-5.95-5.95-5.95-5.95 2.684-5.95 5.95 2.684 5.95 5.95 5.95zm0-3.4a2.525 2.525 0 0 1-2.55-2.55 2.525 2.525 0 0 1 2.55-2.55 2.525 2.525 0 0 1 2.55 2.55 2.525 2.525 0 0 1-2.55 2.55z" />
     </group>
 </vector>

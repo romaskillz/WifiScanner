@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="ic_wifi_color">#0059FF</color>
-    <color name="recycler_background_color">#A3A2A2</color>
+    <color name="ic_wifi_color">#3C9FDE</color>
+    <color name="gray_signal_color">#9b9b9b</color>
+
 </resources>
