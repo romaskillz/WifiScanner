@@ -21,7 +21,9 @@ import io.reactivex.disposables.Disposables
 import org.apache.commons.lang3.StringUtils
 
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ScannerService @Inject constructor(private val mContext: Context) : IWifiScanner {
 
     val SECURITY_MODES = arrayOf("WEP", "WPA", "WPA2", "WPA_EAP", "IEEE8021X")
