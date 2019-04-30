@@ -10,7 +10,8 @@ class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView 
     lateinit var mComponent: ScannerServiceComponent
 
     override fun createPresenter(): ScanListPresenter {
-        return mComponent.presenter()
+        return /*mComponent.presenter()*/ScanListPresenter()
+
     }
 
     fun startScan() {
