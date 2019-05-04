@@ -1,17 +1,16 @@
 package com.example.roman.wifiscanner.fragments.fragment_scan
 
-import com.example.roman.wifiscanner.dagger.ScannerServiceComponent
+import com.example.roman.wifiscanner.dagger.AppComponent
 import com.hannesdorfmann.mosby3.mvp.MvpFragment
 import javax.inject.Inject
 
 class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView {
 
     @Inject
-    lateinit var mComponent: ScannerServiceComponent
+    lateinit var mComponent: AppComponent
 
     override fun createPresenter(): ScanListPresenter {
-        return /*mComponent.presenter()*/ScanListPresenter()
-
+        return mComponent.inject(this)
     }
 
     fun startScan() {
