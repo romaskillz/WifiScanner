@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/frag"
-        android:name="com.example.roman.wifiscanner.fragments.fragment_scan.ScanListFragment"
+        class="com.example.roman.wifiscanner.fragments.fragment_scan.ScanListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_scan_list" />
