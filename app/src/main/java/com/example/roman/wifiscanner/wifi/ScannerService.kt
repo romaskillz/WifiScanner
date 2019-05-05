@@ -24,9 +24,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ScannerService @Inject constructor(private val mContext: Context) : IWifiScanner {
+class ScannerService @Inject internal constructor(private val mContext: Context) : IWifiScanner {
 
-    private val SECURITY_MODES = arrayOf("WEP", "WPA", "WPA2", "WPA_EAP", "IEEE8021X")
+    val SECURITY_MODES = arrayOf("WEP", "WPA", "WPA2", "WPA_EAP", "IEEE8021X")
 
     override fun scan(): Single<List<WifiData>> {
         return Single.create<List<ScanResult>> { emitter ->

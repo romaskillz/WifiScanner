@@ -17,7 +17,7 @@ class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView 
     lateinit var mPresenter: ScanListPresenter
 
     override fun createPresenter(): ScanListPresenter {
-        App.mComponent.inject(this)
+        (activity!!.application as App).appComponent.inject(this)
         return mPresenter
     }
 
