@@ -11,8 +11,9 @@ import com.example.roman.wifiscanner.wifi.Constants.BAD_WIFI_SIGNAL_VALUE
 import com.example.roman.wifiscanner.wifi.Constants.BEST_WIFI_SIGNAL_VALUE
 import com.example.roman.wifiscanner.wifi.Constants.MIDDLE_WIFI_SIGNAL_VALUE
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
+import javax.inject.Inject
 
-class ScanListAdapter constructor(private val wifiItems: MutableList<WifiData>) :
+class ScanListAdapter @Inject internal constructor(private val wifiItems: List<WifiData>) :
     RecyclerView.Adapter<ScanListAdapter.WifiItemViewHolder>() {
 
 

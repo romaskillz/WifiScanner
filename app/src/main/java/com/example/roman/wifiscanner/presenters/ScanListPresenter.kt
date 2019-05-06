@@ -11,10 +11,11 @@ class ScanListPresenter @Inject internal constructor(private val mScannerService
 
     fun startScan() {
         ifViewAttached { view ->
-            view.startScan()
+            view.showProgressDialog()
             mScannerService.scan().subscribe(
                 { list ->
                     view.setAdapterData(list)
+                    view.hideProgressDialog()
                 },
                 { throwable ->
                     Log.d("Can't scan: ", throwable.toString())
