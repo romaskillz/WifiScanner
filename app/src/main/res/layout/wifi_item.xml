@@ -10,15 +10,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/wifi_item_padding_start_end"
+        android:paddingEnd="@dimen/wifi_item_padding_start_end">
 
         <ImageView
-            android:layout_width="@dimen/wifi_item_image_width"
-            android:layout_height="@dimen/wifi_item_image_height"
-            android:src="@drawable/ic_wif_best_signal" />
+            android:id="@+id/wifi_signal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingStart="@dimen/wifi_item_padding_start_end"
+            android:paddingEnd="@dimen/wifi_item_padding_start_end"
+            android:src="@drawable/ic_wifi_best_signal" />
+
+        <ImageView
+            android:id="@+id/wifi_security"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingStart="@dimen/wifi_item_padding_start_end"
+            android:paddingEnd="@dimen/wifi_item_padding_start_end"
+            android:src="@drawable/ic_lock_closed" />
 
         <TextView
-            android:id="@+id/item_wifi_name"
+            android:id="@+id/wifi_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

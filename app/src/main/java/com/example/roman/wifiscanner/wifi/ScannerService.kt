@@ -11,6 +11,7 @@ import android.net.wifi.WifiConfiguration
 import android.net.wifi.WifiManager
 import com.example.roman.wifiscanner.wifi.Constants.EMPTY_STRING
 import com.example.roman.wifiscanner.wifi.Constants.QUOTES
+import com.example.roman.wifiscanner.wifi.Constants.SECURITY_MODES
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.example.roman.wifiscanner.wifi.wifistate.WifiNetworkType
 import com.example.roman.wifiscanner.wifi.wifistate.WifiState
@@ -25,8 +26,6 @@ import javax.inject.Singleton
 
 @Singleton
 class ScannerService @Inject internal constructor(private val mContext: Context) : IWifiScanner {
-
-    val SECURITY_MODES = arrayOf("WEP", "WPA", "WPA2", "WPA_EAP", "IEEE8021X")
 
     override fun scan(): Single<List<WifiData>> {
         return Single.create<List<ScanResult>> { emitter ->

@@ -8,9 +8,13 @@
     <dimen name="item_corner_radius">10dp</dimen>
     <dimen name="item_padding">3dp</dimen>
 
+    <dimen name="ic_lock_width">32dp</dimen>
+    <dimen name="ic_lock_height">40dp</dimen>
+
 
     <dimen name="wifi_tile_icon_width">3dp</dimen>
     <dimen name="wifi_tile_icon_height">3dp</dimen>
+    <dimen name="wifi_item_padding_start_end">5dp</dimen>
 
 
 </resources>

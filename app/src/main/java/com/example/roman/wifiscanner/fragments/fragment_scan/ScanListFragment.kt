@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.roman.wifiscanner.App
 import com.example.roman.wifiscanner.R
+import com.example.roman.wifiscanner.presenters.ScanListPresenter
+import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.hannesdorfmann.mosby3.mvp.MvpFragment
 import kotlinx.android.synthetic.main.fragment_scan_list.view.*
 import javax.inject.Inject
 
 class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView {
-
     @Inject
     lateinit var mPresenter: ScanListPresenter
 
@@ -33,5 +34,9 @@ class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView 
 
     fun onItemClick() {
         //TODO("not implemented") need to handle onItem click
+    }
+
+    override fun setAdapterData(items: List<WifiData>) {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

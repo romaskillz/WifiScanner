@@ -6,5 +6,7 @@
 
     <color name="ic_wifi_color">#3C9FDE</color>
     <color name="gray_signal_color">#9b9b9b</color>
+    <color name="lock_color">#9b9b9b</color>
+
 
 </resources>

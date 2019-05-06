@@ -1,7 +1,7 @@
 package com.example.roman.wifiscanner.dagger
 
 import com.example.roman.wifiscanner.fragments.fragment_scan.ScanListFragment
-import com.example.roman.wifiscanner.fragments.fragment_scan.ScanListPresenter
+import com.example.roman.wifiscanner.presenters.ScanListPresenter
 import dagger.Component
 import javax.inject.Singleton
 
