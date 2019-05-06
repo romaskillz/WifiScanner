@@ -62,8 +62,43 @@ class ScannerService @Inject internal constructor(private val mContext: Context)
             .flattenAsObservable { results -> results }
             .map { result ->
                 val isLocked = SECURITY_MODES.find { item -> result.capabilities.contains(item) } != null
-                WifiData(result.SSID, isLocked)
+                WifiData(result.SSID, isLocked, result.level)
             }.toList()
+    }
+
+    override fun getCurrentSsid(): String {
+        var ssid: String?
+        val connManager = mContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connManager.activeNetworkInfo
+        return if (networkInfo != null && networkInfo.type == ConnectivityManager.TYPE_WIFI && networkInfo.isConnected) {
+            val wifiManager = mContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+            val connectionInfo = wifiManager.connectionInfo
+            ssid = connectionInfo.ssid ?: EMPTY_STRING
+            if (!StringUtils.isBlank(ssid)) {
+                ssid = ssid.replace(QUOTES, EMPTY_STRING)
+            }
+            ssid
+        } else {
+            EMPTY_STRING
+        }
+    }
+
+    override fun connectToSelected(ssid: String, pass: String, type: WifiNetworkType) {
+        val conf = WifiConfiguration()
+        val wifiManager: WifiManager = mContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+        if (type == WifiNetworkType.OPEN) {
+            conf.SSID = QUOTES + ssid + QUOTES
+            conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE)
+        } else {
+            conf.SSID = QUOTES + ssid + QUOTES
+            conf.preSharedKey = QUOTES + pass + QUOTES
+            conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK)
+        }
+
+        val id = wifiManager.addNetwork(conf)
+        wifiManager.disconnect()
+        wifiManager.enableNetwork(id, true)
+        wifiManager.reconnect()
     }
 
     override fun observeWifiOnOffStatus(): Observable<WifiStateEvent> {
@@ -121,40 +156,5 @@ class ScannerService @Inject internal constructor(private val mContext: Context)
                     Observable.empty()
                 }
             }
-    }
-
-    override fun getCurrentSsid(): String {
-        var ssid: String?
-        val connManager = mContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkInfo = connManager.activeNetworkInfo
-        return if (networkInfo != null && networkInfo.type == ConnectivityManager.TYPE_WIFI && networkInfo.isConnected) {
-            val wifiManager = mContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
-            val connectionInfo = wifiManager.connectionInfo
-            ssid = connectionInfo.ssid ?: EMPTY_STRING
-            if (!StringUtils.isBlank(ssid)) {
-                ssid = ssid.replace(QUOTES, EMPTY_STRING)
-            }
-            ssid
-        } else {
-            EMPTY_STRING
-        }
-    }
-
-    override fun connectToSelected(ssid: String, pass: String, type: WifiNetworkType) {
-        val conf = WifiConfiguration()
-        val wifiManager: WifiManager = mContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
-        if (type == WifiNetworkType.OPEN) {
-            conf.SSID = QUOTES + ssid + QUOTES
-            conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE)
-        } else {
-            conf.SSID = QUOTES + ssid + QUOTES
-            conf.preSharedKey = QUOTES + pass + QUOTES
-            conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK)
-        }
-
-        val id = wifiManager.addNetwork(conf)
-        wifiManager.disconnect()
-        wifiManager.enableNetwork(id, true)
-        wifiManager.reconnect()
     }
 }

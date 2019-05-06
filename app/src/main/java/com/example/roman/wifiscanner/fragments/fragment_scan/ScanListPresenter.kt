@@ -10,7 +10,8 @@ class ScanListPresenter @Inject internal constructor(private val mScannerService
     fun startScan() {
         ifViewAttached { view ->
             view.startScan()
-            mScannerService.scan()
+            mScannerService.scan().subscribe()
+//            mScannerService.scanWithoutRx()
         }
     }
 }
