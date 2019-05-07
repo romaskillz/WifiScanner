@@ -1,7 +1,5 @@
 package com.example.roman.wifiscanner.fragments.fragment_scan
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -33,12 +31,8 @@ class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView 
 
     private lateinit var mRecycler: RecyclerView
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        (activity!!.application as App).appComponent.inject(this)
-    }
-
     override fun createPresenter(): ScanListPresenter {
+        (activity!!.application as App).appComponent.inject(this)
         return mPresenter
     }
 
@@ -69,6 +63,6 @@ class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView 
     override fun setAdapterData(items: List<WifiData>) {
         mAdapter = ScanListAdapter(items)
         mRecycler.adapter = mAdapter
-        mAdapter.updateData(items)
+        mAdapter.notifyDataSetChanged()
     }
 }

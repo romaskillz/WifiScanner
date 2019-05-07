@@ -13,7 +13,7 @@ import com.example.roman.wifiscanner.wifi.Constants.MIDDLE_WIFI_SIGNAL_VALUE
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import javax.inject.Inject
 
-class ScanListAdapter @Inject internal constructor(private var wifiItems: List<WifiData>) :
+class ScanListAdapter @Inject internal constructor(private val wifiItems: List<WifiData>) :
     RecyclerView.Adapter<ScanListAdapter.WifiItemViewHolder>() {
 
 
@@ -46,10 +46,5 @@ class ScanListAdapter @Inject internal constructor(private var wifiItems: List<W
         var mWifiTitle: TextView = itemView.findViewById(R.id.wifi_title) as TextView
         var mWifiSignalStrength: ImageView = itemView.findViewById(R.id.wifi_signal) as ImageView
         var mWifiSecurityIcon: ImageView = itemView.findViewById(R.id.wifi_security) as ImageView
-    }
-
-    fun updateData(items: List<WifiData>) {
-        wifiItems = items
-        notifyDataSetChanged()
     }
 }
