@@ -1,6 +1,5 @@
 package com.example.roman.wifiscanner.fragments.fragment_scan
 
-import android.content.ClipData
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,7 @@ import com.example.roman.wifiscanner.wifi.Constants.MIDDLE_WIFI_SIGNAL_VALUE
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import javax.inject.Inject
 
-class ScanListAdapter @Inject internal constructor(private val wifiItems: List<WifiData>) :
+class ScanListAdapter @Inject internal constructor(private var wifiItems: List<WifiData>) :
     RecyclerView.Adapter<ScanListAdapter.WifiItemViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): WifiItemViewHolder {
@@ -22,9 +21,7 @@ class ScanListAdapter @Inject internal constructor(private val wifiItems: List<W
         return WifiItemViewHolder(v)
     }
 
-    override fun getItemCount(): Int {
-        return wifiItems.size
-    }
+    override fun getItemCount() = wifiItems.size
 
     override fun onBindViewHolder(viewHolder: WifiItemViewHolder, i: Int) {
         val wifi = wifiItems[i]

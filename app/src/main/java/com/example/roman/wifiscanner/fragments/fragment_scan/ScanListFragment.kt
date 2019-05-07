@@ -1,9 +1,6 @@
 package com.example.roman.wifiscanner.fragments.fragment_scan
 
-<<<<<<< HEAD
-=======
 import android.content.Context
->>>>>>> 38d92930094256083dc607281d42a7213d1502bc
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
