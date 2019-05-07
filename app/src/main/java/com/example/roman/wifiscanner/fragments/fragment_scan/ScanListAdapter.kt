@@ -1,5 +1,6 @@
 package com.example.roman.wifiscanner.fragments.fragment_scan
 
+import android.content.ClipData
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -16,19 +17,17 @@ import javax.inject.Inject
 class ScanListAdapter @Inject internal constructor(private var wifiItems: List<WifiData>) :
     RecyclerView.Adapter<ScanListAdapter.WifiItemViewHolder>() {
 
-
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ScanListAdapter.WifiItemViewHolder {
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): WifiItemViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.wifi_item, p0, false)
-        return ScanListAdapter.WifiItemViewHolder(v)
+        return WifiItemViewHolder(v)
     }
 
     override fun getItemCount(): Int {
         return wifiItems.size
     }
 
-    override fun onBindViewHolder(viewHolder: ScanListAdapter.WifiItemViewHolder, i: Int) {
+    override fun onBindViewHolder(viewHolder: WifiItemViewHolder, i: Int) {
         val wifi = wifiItems[i]
-
         viewHolder.mWifiTitle.text = wifi.ssid
         viewHolder.mWifiSecurityIcon.visibility = if (wifi.isLocked) View.VISIBLE else View.GONE
         val idWifiIcon: Int = when {
@@ -46,9 +45,10 @@ class ScanListAdapter @Inject internal constructor(private var wifiItems: List<W
         var mWifiTitle: TextView = itemView.findViewById(R.id.wifi_title) as TextView
         var mWifiSignalStrength: ImageView = itemView.findViewById(R.id.wifi_signal) as ImageView
         var mWifiSecurityIcon: ImageView = itemView.findViewById(R.id.wifi_security) as ImageView
+
     }
 
-    fun updateData(items: List<WifiData>) {
+    fun updateItems(items: List<WifiData>) {
         wifiItems = items
         notifyDataSetChanged()
     }

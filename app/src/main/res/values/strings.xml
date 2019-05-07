@@ -2,5 +2,7 @@
     <string name="app_name">WiFi scanner</string>
     <string name="scan_button_text">scan</string>
     <string name="list_of_wifi_title">Wi-Fi</string>
-    <string name="empty_list_message">Now WI-Fi list is empty. You need to push scan button to get list of Wi-Fi near you.</string>
+    <string name="empty_list_message">Now WI-Fi list is empty.
+        You need to push scan button to get list of Wi-Fi near you.
+    </string>
 </resources>
