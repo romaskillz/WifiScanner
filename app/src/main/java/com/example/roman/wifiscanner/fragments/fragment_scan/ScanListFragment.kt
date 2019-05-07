@@ -61,6 +61,7 @@ class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView 
 
     override fun setAdapterData(items: List<WifiData>) {
         val mAdapter = ScanListAdapter(items)
+        mRecycler.adapter = mAdapter
         mAdapter.updateItems(items)
     }
 }
