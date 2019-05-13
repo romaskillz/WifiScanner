@@ -11,6 +11,7 @@ import javax.inject.Singleton
 class AdapterModule {
     @Provides
     @Singleton
-    fun provideScanListAdapter(wifiItems: List<WifiData>):
-            RecyclerView.Adapter<ScanListAdapter.WifiItemViewHolder> = ScanListAdapter(wifiItems)
+    fun provideScanListAdapter(wifiItems: List<WifiData>, itemClickListener: ScanListAdapter.OnItemClickListener):
+            RecyclerView.Adapter<ScanListAdapter.WifiItemViewHolder> =
+        ScanListAdapter(wifiItems, itemClickListener)
 }

@@ -9,9 +9,9 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class PresenterModule {
+class ScanListPresenterModule {
     @Provides
     @Singleton
-    fun provideScanListPresenter(mScannerService: IWifiScanner):
-            MvpBasePresenter<IScanView> = ScanListPresenter(mScannerService)
+    fun provideScanListPresenter(mScannerService: IWifiScanner): MvpBasePresenter<IScanView> =
+        ScanListPresenter(mScannerService)
 }

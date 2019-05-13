@@ -12,6 +12,5 @@ import javax.inject.Singleton
 class ScannerModule {
     @Provides
     @Singleton
-    fun provideScanListPresenter(mContext: Context):
-            IWifiScanner = ScannerService(mContext)
+    fun provideScanListPresenter(mContext: Context): IWifiScanner = ScannerService(mContext)
 }

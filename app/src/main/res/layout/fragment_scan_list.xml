@@ -24,9 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:visibility="gone"
         android:indeterminateDrawable="@drawable/spinner"
-        tools:visibility="visible" />
+        android:visibility="gone"
+        tools:visibility="gone" />
 
     <TextView
         android:id="@+id/emptyList"

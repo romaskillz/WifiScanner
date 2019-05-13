@@ -1,6 +1,5 @@
 package com.example.roman.wifiscanner.fragments.fragment_scan
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -19,7 +18,8 @@ import com.hannesdorfmann.mosby3.mvp.MvpFragment
 import kotlinx.android.synthetic.main.fragment_scan_list.view.*
 import javax.inject.Inject
 
-class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView {
+
+class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView, ScanListAdapter.OnItemClickListener {
 
     @Inject
     lateinit var mPresenter: ScanListPresenter
@@ -46,7 +46,9 @@ class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView 
         mRecycler = rootView.findViewById(R.id.wifiRecycler) as RecyclerView
         mProgressBar = rootView.findViewById(R.id.progressBar) as ProgressBar
         mRecycler.layoutManager = LinearLayoutManager(activity)
-        rootView.bShow.setOnClickListener { mPresenter.startScan() }
+        rootView.bShow.setOnClickListener {
+            mPresenter.startScan()
+        }
     }
 
     override fun showProgressDialog() {
@@ -60,8 +62,24 @@ class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView 
     }
 
     override fun setAdapterData(items: List<WifiData>) {
-        val mAdapter = ScanListAdapter(items)
+        val mAdapter = ScanListAdapter(items, this)
         mRecycler.adapter = mAdapter
         mAdapter.updateItems(items)
+    }
+
+    override fun showNextScreen() {
+        /*val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.container, DetailsWifiFragment())
+        fragmentTransaction.commit()*/
+
+        /*val fragmentTransaction = activity!!.supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.container, DetailsWifiFragment())
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()*/
+
+    }
+
+    override fun onItemClick(item: WifiData) {
+        presenter.nextScreenWifiInfo()
     }
 }

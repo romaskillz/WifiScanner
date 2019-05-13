@@ -22,4 +22,10 @@ class ScanListPresenter @Inject internal constructor(private val mScannerService
                 })
         }
     }
+
+    fun nextScreenWifiInfo() {
+        ifViewAttached { view ->
+            view.showNextScreen()
+        }
+    }
 }
