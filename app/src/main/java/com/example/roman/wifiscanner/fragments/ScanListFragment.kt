@@ -1,4 +1,4 @@
-package com.example.roman.wifiscanner.fragments.fragment_scan
+package com.example.roman.wifiscanner.fragments
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -10,10 +10,10 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import com.example.roman.wifiscanner.App
 import com.example.roman.wifiscanner.R
-import com.example.roman.wifiscanner.fragments.fragment_detail.DetailsWifiFragment
+import com.example.roman.wifiscanner.adapters.ScanListAdapter
+import com.example.roman.wifiscanner.interfaces.IScanView
 import com.example.roman.wifiscanner.presenters.ScanListPresenter
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.hannesdorfmann.mosby3.mvp.MvpFragment
@@ -70,8 +70,14 @@ class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView,
     }
 
     override fun showNextScreen(item: WifiData) {
+        val wifiData = Bundle()
+        wifiData.putString("ssid", item.ssid)
+        wifiData.putBoolean("isLocked", item.isLocked)
+        wifiData.putInt("signalLevel", item.signalLevel)
+        val detailsFragment = DetailsWifiFragment.newInstance(wifiData)
+        
         val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.container, DetailsWifiFragment())
+        fragmentTransaction.replace(R.id.container, detailsFragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }

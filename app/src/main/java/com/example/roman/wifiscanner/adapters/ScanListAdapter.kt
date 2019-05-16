@@ -1,4 +1,4 @@
-package com.example.roman.wifiscanner.fragments.fragment_scan
+package com.example.roman.wifiscanner.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.roman.wifiscanner.R
-import com.example.roman.wifiscanner.wifi.Constants.BAD_WIFI_SIGNAL_VALUE
-import com.example.roman.wifiscanner.wifi.Constants.BEST_WIFI_SIGNAL_VALUE
-import com.example.roman.wifiscanner.wifi.Constants.MIDDLE_WIFI_SIGNAL_VALUE
+import com.example.roman.wifiscanner.Constants.BAD_WIFI_SIGNAL_VALUE
+import com.example.roman.wifiscanner.Constants.BEST_WIFI_SIGNAL_VALUE
+import com.example.roman.wifiscanner.Constants.MIDDLE_WIFI_SIGNAL_VALUE
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import javax.inject.Inject
 

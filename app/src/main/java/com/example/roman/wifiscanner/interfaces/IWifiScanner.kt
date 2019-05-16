@@ -1,4 +1,4 @@
-package com.example.roman.wifiscanner.wifi
+package com.example.roman.wifiscanner.interfaces
 
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.example.roman.wifiscanner.wifi.wifistate.WifiNetworkType

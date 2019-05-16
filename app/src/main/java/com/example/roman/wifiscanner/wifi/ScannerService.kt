@@ -9,9 +9,10 @@ import android.net.ConnectivityManager
 import android.net.wifi.ScanResult
 import android.net.wifi.WifiConfiguration
 import android.net.wifi.WifiManager
-import com.example.roman.wifiscanner.wifi.Constants.EMPTY_STRING
-import com.example.roman.wifiscanner.wifi.Constants.QUOTES
-import com.example.roman.wifiscanner.wifi.Constants.SECURITY_MODES
+import com.example.roman.wifiscanner.interfaces.IWifiScanner
+import com.example.roman.wifiscanner.Constants.EMPTY_STRING
+import com.example.roman.wifiscanner.Constants.QUOTES
+import com.example.roman.wifiscanner.Constants.SECURITY_MODES
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.example.roman.wifiscanner.wifi.wifistate.WifiNetworkType
 import com.example.roman.wifiscanner.wifi.wifistate.WifiState
@@ -25,7 +26,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ScannerService @Inject internal constructor(private val mContext: Context) : IWifiScanner {
+class ScannerService @Inject internal constructor(private val mContext: Context) :
+    IWifiScanner {
 
     override fun scan(): Single<List<WifiData>> {
         return Single.create<List<ScanResult>> { emitter ->

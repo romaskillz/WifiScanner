@@ -1,7 +1,7 @@
 package com.example.roman.wifiscanner.dagger
 
 import android.support.v7.widget.RecyclerView
-import com.example.roman.wifiscanner.fragments.fragment_scan.ScanListAdapter
+import com.example.roman.wifiscanner.adapters.ScanListAdapter
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import dagger.Module
 import dagger.Provides

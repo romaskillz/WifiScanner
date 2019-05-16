@@ -1,6 +1,6 @@
 package com.example.roman.wifiscanner.dagger
 
-import com.example.roman.wifiscanner.fragments.fragment_deatails.IDetailsView
+import com.example.roman.wifiscanner.interfaces.IDetailsView
 import com.example.roman.wifiscanner.presenters.DetailsPresenter
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter
 import dagger.Module

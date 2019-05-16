@@ -1,4 +1,4 @@
-package com.example.roman.wifiscanner.wifi
+package com.example.roman.wifiscanner
 
 object Constants {
     const val EMPTY_STRING = ""

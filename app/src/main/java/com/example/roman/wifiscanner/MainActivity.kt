@@ -1,10 +1,8 @@
 package com.example.roman.wifiscanner
 
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-import com.example.roman.wifiscanner.fragments.fragment_scan.ScanListFragment
+import com.example.roman.wifiscanner.fragments.ScanListFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +13,9 @@ class MainActivity : AppCompatActivity() {
 
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.container, ScanListFragment())
+        fragmentTransaction.replace(R.id.container,
+            ScanListFragment()
+        )
         fragmentTransaction.commit()
     }
 }

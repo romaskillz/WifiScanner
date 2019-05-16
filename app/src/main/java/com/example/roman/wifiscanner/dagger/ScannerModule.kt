@@ -1,8 +1,7 @@
 package com.example.roman.wifiscanner.dagger
 
 import android.content.Context
-import com.example.roman.wifiscanner.App
-import com.example.roman.wifiscanner.wifi.IWifiScanner
+import com.example.roman.wifiscanner.interfaces.IWifiScanner
 import com.example.roman.wifiscanner.wifi.ScannerService
 import dagger.Module
 import dagger.Provides
