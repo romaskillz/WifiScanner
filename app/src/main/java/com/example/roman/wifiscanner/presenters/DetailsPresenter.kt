@@ -6,4 +6,10 @@ import javax.inject.Inject
 
 class DetailsPresenter @Inject internal constructor() : MvpBasePresenter<IDetailsView>() {
 
+fun connectToSsid(){
+    ifViewAttached { view ->
+        view.connect()
+    }
+}
+
 }
