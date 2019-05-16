@@ -7,5 +7,5 @@ interface IScanView : MvpView {
     fun showProgressDialog()
     fun hideProgressDialog()
     fun setAdapterData(items: List<WifiData>)
-    fun showNextScreen()
+    fun showNextScreen(item: WifiData)
 }

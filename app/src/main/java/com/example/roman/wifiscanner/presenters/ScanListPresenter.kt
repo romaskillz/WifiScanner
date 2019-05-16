@@ -3,6 +3,7 @@ package com.example.roman.wifiscanner.presenters
 import android.util.Log
 import com.example.roman.wifiscanner.fragments.fragment_scan.IScanView
 import com.example.roman.wifiscanner.wifi.IWifiScanner
+import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter
 import javax.inject.Inject
 
@@ -23,9 +24,9 @@ class ScanListPresenter @Inject internal constructor(private val mScannerService
         }
     }
 
-    fun nextScreenWifiInfo() {
+    fun nextScreenWifiInfo(item: WifiData) {
         ifViewAttached { view ->
-            view.showNextScreen()
+            view.showNextScreen(item)
         }
     }
 }

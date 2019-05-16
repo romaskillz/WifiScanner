@@ -5,4 +5,8 @@
     <string name="empty_list_message">Now WI-Fi list is empty.
         You need to push scan button to get list of Wi-Fi near you.
     </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_connect_button">connect</string>
 </resources>

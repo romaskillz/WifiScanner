@@ -10,8 +10,10 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import com.example.roman.wifiscanner.App
 import com.example.roman.wifiscanner.R
+import com.example.roman.wifiscanner.fragments.fragment_detail.DetailsWifiFragment
 import com.example.roman.wifiscanner.presenters.ScanListPresenter
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.hannesdorfmann.mosby3.mvp.MvpFragment
@@ -67,19 +69,14 @@ class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView,
         mAdapter.updateItems(items)
     }
 
-    override fun showNextScreen() {
-        /*val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.container, DetailsWifiFragment())
-        fragmentTransaction.commit()*/
-
-        /*val fragmentTransaction = activity!!.supportFragmentManager.beginTransaction()
+    override fun showNextScreen(item: WifiData) {
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.replace(R.id.container, DetailsWifiFragment())
         fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()*/
-
+        fragmentTransaction.commit()
     }
 
     override fun onItemClick(item: WifiData) {
-        presenter.nextScreenWifiInfo()
+        presenter.nextScreenWifiInfo(item)
     }
 }
