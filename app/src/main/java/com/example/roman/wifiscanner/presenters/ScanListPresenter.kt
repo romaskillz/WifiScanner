@@ -1,14 +1,14 @@
 package com.example.roman.wifiscanner.presenters
 
 import android.util.Log
-import com.example.roman.wifiscanner.interfaces.IScanView
+import com.example.roman.wifiscanner.interfaces.IScanListFragmentView
 import com.example.roman.wifiscanner.interfaces.IWifiScanner
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter
 import javax.inject.Inject
 
 class ScanListPresenter @Inject internal constructor(private val mScannerService: IWifiScanner) :
-    MvpBasePresenter<IScanView>() {
+    MvpBasePresenter<IScanListFragmentView>() {
 
     fun startScan() {
         ifViewAttached { view ->

@@ -13,7 +13,7 @@ import android.widget.TextView
 import com.example.roman.wifiscanner.App
 import com.example.roman.wifiscanner.R
 import com.example.roman.wifiscanner.adapters.ScanListAdapter
-import com.example.roman.wifiscanner.interfaces.IScanView
+import com.example.roman.wifiscanner.interfaces.IScanListFragmentView
 import com.example.roman.wifiscanner.presenters.ScanListPresenter
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.hannesdorfmann.mosby3.mvp.MvpFragment
@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_scan_list.view.*
 import javax.inject.Inject
 
 
-class ScanListFragment : MvpFragment<IScanView, ScanListPresenter>(), IScanView, ScanListAdapter.OnItemClickListener {
+class ScanListFragment : MvpFragment<IScanListFragmentView, ScanListPresenter>(), IScanListFragmentView, ScanListAdapter.OnItemClickListener {
 
     @Inject
     lateinit var mPresenter: ScanListPresenter

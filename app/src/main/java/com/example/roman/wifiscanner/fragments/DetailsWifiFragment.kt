@@ -5,16 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.roman.wifiscanner.App
 import com.example.roman.wifiscanner.R
-import com.example.roman.wifiscanner.interfaces.IDetailsView
+import com.example.roman.wifiscanner.interfaces.IDetailsFragmentView
 import com.example.roman.wifiscanner.presenters.DetailsPresenter
 import com.hannesdorfmann.mosby3.mvp.MvpFragment
 import javax.inject.Inject
 
-class DetailsWifiFragment : MvpFragment<IDetailsView, DetailsPresenter>(), IDetailsView {
+class DetailsWifiFragment : MvpFragment<IDetailsFragmentView, DetailsPresenter>(), IDetailsFragmentView {
 
     @Inject
     lateinit var mPresenter: DetailsPresenter
@@ -35,28 +36,32 @@ class DetailsWifiFragment : MvpFragment<IDetailsView, DetailsPresenter>(), IDeta
     lateinit var ssidText: TextView
     lateinit var islockedText: TextView
     lateinit var mignalLevelText: TextView
+    lateinit var mInputPassword: EditText
     lateinit var connectButton: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_details_wifi, container, false)
+
         ssidText = rootView.findViewById(R.id.wifi_name)
         islockedText = rootView.findViewById(R.id.wifi_security)
         mignalLevelText = rootView.findViewById(R.id.wifi_signal)
+        mInputPassword = rootView.findViewById(R.id.et_pass)
         connectButton = rootView.findViewById(R.id.b_connect)
 
-        ssidText.text = arguments?.get("ssid").toString()
+        val nameWifi = arguments?.get("ssid").toString()
+
+        ssidText.text = nameWifi
         islockedText.text = arguments?.get("isLocked").toString()
         mignalLevelText.text = arguments?.get("signalLevel").toString()
+
         connectButton.setOnClickListener {
-            presenter.connectToSsid()
+            presenter.connectToSsid(nameWifi, mInputPassword.text.toString())
         }
 
         return rootView
     }
 
-    override fun connect() {
-        Toast.makeText(activity, "Connected", Toast.LENGTH_SHORT).show()
+    override fun showEmptyPassword() {
+        Toast.makeText(activity, "Password is empty", Toast.LENGTH_SHORT).show()
     }
-
-
 }
