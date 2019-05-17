@@ -37,7 +37,7 @@ class DetailsWifiFragment : MvpFragment<IDetailsFragmentView, DetailsPresenter>(
     lateinit var islockedText: TextView
     lateinit var mignalLevelText: TextView
     lateinit var mInputPassword: EditText
-    lateinit var connectButton: Button
+    lateinit var mConnectButton: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_details_wifi, container, false)
@@ -46,16 +46,17 @@ class DetailsWifiFragment : MvpFragment<IDetailsFragmentView, DetailsPresenter>(
         islockedText = rootView.findViewById(R.id.wifi_security)
         mignalLevelText = rootView.findViewById(R.id.wifi_signal)
         mInputPassword = rootView.findViewById(R.id.et_pass)
-        connectButton = rootView.findViewById(R.id.b_connect)
+        mConnectButton = rootView.findViewById(R.id.b_connect)
 
-        val nameWifi = arguments?.get("ssid").toString()
+        val nameWifi = arguments?.get("ssid") as String
+        val isLocked = arguments?.get("isLocked") as Boolean
 
         ssidText.text = nameWifi
-        islockedText.text = arguments?.get("isLocked").toString()
+        islockedText.text = if (isLocked) "Open" else "Wi-Fi need password"
         mignalLevelText.text = arguments?.get("signalLevel").toString()
 
-        connectButton.setOnClickListener {
-            presenter.connectToSsid(nameWifi, mInputPassword.text.toString())
+        mConnectButton.setOnClickListener {
+            presenter.connectToSsid(nameWifi, mInputPassword.text.toString(), isLocked)
         }
 
         return rootView
