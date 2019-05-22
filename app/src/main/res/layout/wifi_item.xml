@@ -7,38 +7,62 @@
     android:layout_margin="3dp"
     app:cardCornerRadius="@dimen/item_corner_radius">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/wifi_signal"
+            android:id="@+id/mWifiSignalImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="8dp"
             android:paddingStart="@dimen/wifi_item_padding_start_end"
             android:paddingEnd="@dimen/wifi_item_padding_start_end"
-            android:src="@drawable/ic_wifi_best_signal" />
+            android:src="@drawable/ic_wifi_best_signal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/wifi_security"
+            android:id="@+id/mWifiSecurityImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="8dp"
             android:paddingStart="@dimen/wifi_item_padding_start_end"
             android:paddingEnd="@dimen/wifi_item_padding_start_end"
-            android:src="@drawable/ic_lock_closed" />
+            android:src="@drawable/ic_lock_closed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mWifiSignalImg"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/wifi_title"
-            android:layout_width="match_parent"
+            android:id="@+id/mWifiName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="8dp"
             android:gravity="center"
             android:textSize="@dimen/item_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mWifiSecurityImage"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="WIFI NAME" />
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/mWifiFrequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="20dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2,4 mHz" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>
 

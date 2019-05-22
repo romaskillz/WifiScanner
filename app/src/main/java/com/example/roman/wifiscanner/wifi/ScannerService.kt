@@ -63,7 +63,7 @@ class ScannerService @Inject internal constructor(private val mContext: Context)
             .flattenAsObservable { results -> results }
             .map { result ->
                 val isLocked = SECURITY_MODES.find { item -> result.capabilities.contains(item) } != null
-                WifiData(result.SSID, isLocked, result.level)
+                WifiData(result.SSID, isLocked, result.level, result.frequency)
             }.toList()
     }
 

@@ -37,12 +37,16 @@ class ScanListAdapter @Inject internal constructor(
 
     class WifiItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private var mWifiTitle: TextView = itemView.findViewById(R.id.wifi_title) as TextView
-        private var mWifiSignalStrength: ImageView = itemView.findViewById(R.id.wifi_signal) as ImageView
-        private var mWifiSecurityIcon: ImageView = itemView.findViewById(R.id.wifi_security) as ImageView
+        private var mWifiTitle: TextView = itemView.findViewById(R.id.mWifiName) as TextView
+        private var mWifiFrequency: TextView = itemView.findViewById(R.id.mWifiFrequency) as TextView
+        private var mWifiSignalStrength: ImageView = itemView.findViewById(R.id.mWifiSignalImg) as ImageView
+        private var mWifiSecurityIcon: ImageView = itemView.findViewById(R.id.mWifiSecurityImage) as ImageView
 
         fun bind(item: WifiData, listener: OnItemClickListener) {
+            val frequency = item.frequency
+            val textFrequency = if (frequency > 5000) "5 mHz" else "2,4 mHz"
             mWifiTitle.text = item.ssid
+            mWifiFrequency.text = textFrequency
             mWifiSecurityIcon.visibility = if (item.isLocked) View.VISIBLE else View.GONE
             val idWifiIcon: Int = when {
                 //  Wi-Fi signal values got from:
@@ -55,7 +59,6 @@ class ScanListAdapter @Inject internal constructor(
             mWifiSignalStrength.setImageResource(idWifiIcon)
             itemView.setOnClickListener { listener.onItemClick(item) }
         }
-
     }
 
     fun updateItems(items: List<WifiData>) {

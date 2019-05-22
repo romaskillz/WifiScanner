@@ -7,118 +7,107 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/name_title"
+        style="@style/WifiDetailElement"
         android:text="@string/ssid_name"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/wifi_name"
+        app:layout_constraintEnd_toStartOf="@+id/mWifiName"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/wifi_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
+        android:id="@+id/mWifiName"
+        style="@style/WifiDetailElement"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/name_title"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/security_title"
+        style="@style/WifiDetailElement"
         android:text="@string/ssid_security"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/wifi_security"
+        app:layout_constraintEnd_toStartOf="@+id/mWifiSecurityType"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/name_title" />
 
     <TextView
-        android:id="@+id/wifi_security"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
+        android:id="@+id/mWifiSecurityType"
+        style="@style/WifiDetailElement"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/wifi_name"
+        app:layout_constraintStart_toEndOf="@+id/security_title"
+        app:layout_constraintTop_toBottomOf="@+id/mWifiName"
         tools:text="2" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/signal_level"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/wifi_signal"
+        android:id="@+id/frequency_title"
+        style="@style/WifiDetailElement"
+        android:text="@string/frequency"
+        app:layout_constraintEnd_toStartOf="@+id/mWifiFrequency"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/security_title" />
 
-    <ImageView
-        android:id="@+id/wifi_signal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        tools:src="@drawable/ic_wifi_bad_signal"
+    <TextView
+        android:id="@+id/mWifiFrequency"
+        style="@style/WifiDetailElement"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/wifi_security"
+        app:layout_constraintStart_toEndOf="@+id/frequency_title"
+        app:layout_constraintTop_toBottomOf="@+id/mWifiSecurityType"
         tools:text="3" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/signal_title"
+        style="@style/WifiDetailElement"
+        android:text="@string/signal_level"
+        app:layout_constraintEnd_toStartOf="@+id/mWifiSignalImg"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mWifiFrequency" />
+
+    <ImageView
+        android:id="@+id/mWifiSignalImg"
+        style="@style/WifiDetailElement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/signal_title"
+        app:layout_constraintTop_toBottomOf="@+id/mWifiFrequency"
+        tools:src="@drawable/ic_wifi_bad_signal"
+        tools:text="3" />
+
+    <TextView
+        android:id="@+id/tipText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/tip_text"
-        app:layout_constraintBottom_toTopOf="@+id/et_pass"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/mWifiPasswordEt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/et_pass"
+        android:id="@+id/mWifiPasswordEt"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/b_connect"
+        app:layout_constraintBottom_toTopOf="@+id/mWifiConnect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/b_connect"
+        android:id="@+id/mWifiConnect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
