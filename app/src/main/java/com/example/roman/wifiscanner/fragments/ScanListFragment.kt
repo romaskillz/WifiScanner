@@ -20,8 +20,8 @@ import com.hannesdorfmann.mosby3.mvp.MvpFragment
 import kotlinx.android.synthetic.main.fragment_scan_list.view.*
 import javax.inject.Inject
 
-
-class ScanListFragment : MvpFragment<IScanListFragmentView, ScanListPresenter>(), IScanListFragmentView, ScanListAdapter.OnItemClickListener {
+class ScanListFragment : MvpFragment<IScanListFragmentView, ScanListPresenter>(), IScanListFragmentView,
+    ScanListAdapter.OnItemClickListener {
 
     @Inject
     lateinit var mPresenter: ScanListPresenter
@@ -54,6 +54,7 @@ class ScanListFragment : MvpFragment<IScanListFragmentView, ScanListPresenter>()
     }
 
     override fun showProgressDialog() {
+        mRecycler.visibility = GONE
         mEmptyListText.visibility = GONE
         mProgressBar.visibility = VISIBLE
     }
@@ -75,7 +76,6 @@ class ScanListFragment : MvpFragment<IScanListFragmentView, ScanListPresenter>()
         wifiData.putBoolean("isLocked", item.isLocked)
         wifiData.putInt("signalLevel", item.signalLevel)
         val detailsFragment = DetailsWifiFragment.newInstance(wifiData)
-        
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.replace(R.id.container, detailsFragment)
         fragmentTransaction.addToBackStack(null)

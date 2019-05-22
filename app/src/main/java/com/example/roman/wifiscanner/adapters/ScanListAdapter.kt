@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.roman.wifiscanner.R
 import com.example.roman.wifiscanner.Constants.BAD_WIFI_SIGNAL_VALUE
 import com.example.roman.wifiscanner.Constants.BEST_WIFI_SIGNAL_VALUE
 import com.example.roman.wifiscanner.Constants.MIDDLE_WIFI_SIGNAL_VALUE
+import com.example.roman.wifiscanner.R
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import javax.inject.Inject
 
@@ -37,9 +37,9 @@ class ScanListAdapter @Inject internal constructor(
 
     class WifiItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var mWifiTitle: TextView = itemView.findViewById(R.id.wifi_title) as TextView
-        var mWifiSignalStrength: ImageView = itemView.findViewById(R.id.wifi_signal) as ImageView
-        var mWifiSecurityIcon: ImageView = itemView.findViewById(R.id.wifi_security) as ImageView
+        private var mWifiTitle: TextView = itemView.findViewById(R.id.wifi_title) as TextView
+        private var mWifiSignalStrength: ImageView = itemView.findViewById(R.id.wifi_signal) as ImageView
+        private var mWifiSecurityIcon: ImageView = itemView.findViewById(R.id.wifi_security) as ImageView
 
         fun bind(item: WifiData, listener: OnItemClickListener) {
             mWifiTitle.text = item.ssid
@@ -53,8 +53,6 @@ class ScanListAdapter @Inject internal constructor(
                 else -> R.drawable.ic_wifi_worst_signal
             }
             mWifiSignalStrength.setImageResource(idWifiIcon)
-
-
             itemView.setOnClickListener { listener.onItemClick(item) }
         }
 

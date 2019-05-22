@@ -10,4 +10,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_connect_button">connect</string>
     <string name="tip_text">If you want to connect to this Wi-Fi, you need input password and push the connect button</string>
+    <string name="ssid_name">Name</string>
+    <string name="ssid_security">Security</string>
+    <string name="signal_level">Signal level</string>
 </resources>
