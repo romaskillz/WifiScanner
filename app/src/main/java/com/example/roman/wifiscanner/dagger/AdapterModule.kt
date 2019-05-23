@@ -12,6 +12,5 @@ class AdapterModule {
     @Provides
     @Singleton
     fun provideScanListAdapter(wifiItems: List<WifiData>, itemClickListener: ScanListAdapter.OnItemClickListener):
-            RecyclerView.Adapter<ScanListAdapter.WifiItemViewHolder> =
-        ScanListAdapter(wifiItems, itemClickListener)
+            RecyclerView.Adapter<ScanListAdapter.WifiItemViewHolder> = ScanListAdapter(wifiItems, itemClickListener)
 }

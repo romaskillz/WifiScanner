@@ -7,5 +7,5 @@ interface IScanListFragmentView : MvpView {
     fun showProgressDialog()
     fun hideProgressDialog()
     fun setAdapterData(items: List<WifiData>)
-    fun showNextScreen(item: WifiData)
+    fun showNextScreen()
 }

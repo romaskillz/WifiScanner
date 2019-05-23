@@ -10,5 +10,7 @@ object Constants {
     const val MIDDLE_WIFI_SIGNAL_VALUE = -70
     const val BAD_WIFI_SIGNAL_VALUE = -80
 
+    const val FREQUENCY = 5000
+
     const val DELAY_WIFI_CONNECTION_SCREEN_MS = 4000L
 }

@@ -3,11 +3,13 @@ package com.example.roman.wifiscanner.presenters
 import android.util.Log
 import com.example.roman.wifiscanner.interfaces.IScanListFragmentView
 import com.example.roman.wifiscanner.interfaces.IWifiScanner
+import com.example.roman.wifiscanner.wifi.wifidataclass.ISelectedWifiInfo
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter
 import javax.inject.Inject
 
-class ScanListPresenter @Inject internal constructor(private val mScannerService: IWifiScanner) :
+class ScanListPresenter @Inject internal constructor(private val mScannerService: IWifiScanner,
+                                                     private val mSelectedWifiInfo: ISelectedWifiInfo) :
     MvpBasePresenter<IScanListFragmentView>() {
 
     fun startScan() {
@@ -26,7 +28,11 @@ class ScanListPresenter @Inject internal constructor(private val mScannerService
 
     fun nextScreenWifiInfo(item: WifiData) {
         ifViewAttached { view ->
-            view.showNextScreen(item)
+            mSelectedWifiInfo.nameWifi = item.ssid
+            mSelectedWifiInfo.isLocked = item.isLocked
+            mSelectedWifiInfo.frequency = item.frequency
+            mSelectedWifiInfo.signalLevel = item.signalLevel
+            view.showNextScreen()
         }
     }
 }

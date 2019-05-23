@@ -14,7 +14,8 @@ import javax.inject.Singleton
         ScanListPresenterModule::class,
         DetailsPresenterModule::class,
         ScannerModule::class,
-        AdapterModule::class
+        AdapterModule::class,
+        SelectedWifiInfoModule::class
     ]
 )
 interface AppComponent {

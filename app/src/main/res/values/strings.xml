@@ -15,4 +15,9 @@
     <string name="signal_level">Signal level</string>
     <string name="frequency">Frequency</string>
     <string name="speed">Speed</string>
+    <string name="open_wifi">Open</string>
+    <string name="need_password_wifi">Wi-Fi need password</string>
+    <string name="low_frequency">2.4 mHz</string>
+    <string name="high_frequency">5 mHz</string>
+    <string name="tip_text_second">You don\'t need password for connecting to this network</string>
 </resources>

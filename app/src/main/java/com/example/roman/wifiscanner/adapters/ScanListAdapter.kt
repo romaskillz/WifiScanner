@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.roman.wifiscanner.Constants.BAD_WIFI_SIGNAL_VALUE
 import com.example.roman.wifiscanner.Constants.BEST_WIFI_SIGNAL_VALUE
+import com.example.roman.wifiscanner.Constants.FREQUENCY
 import com.example.roman.wifiscanner.Constants.MIDDLE_WIFI_SIGNAL_VALUE
 import com.example.roman.wifiscanner.R
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
@@ -44,10 +45,16 @@ class ScanListAdapter @Inject internal constructor(
 
         fun bind(item: WifiData, listener: OnItemClickListener) {
             val frequency = item.frequency
-            val textFrequency = if (frequency > 5000) "5 mHz" else "2,4 mHz"
+            val textFrequency =
+                if (frequency > FREQUENCY)
+                    itemView.context.getString(R.string.high_frequency)
+                else
+                    itemView.context.getString(R.string.low_frequency)
+
             mWifiTitle.text = item.ssid
             mWifiFrequency.text = textFrequency
-            mWifiSecurityIcon.visibility = if (item.isLocked) View.VISIBLE else View.GONE
+            mWifiSecurityIcon.visibility = if (item.isLocked) View.VISIBLE else View.INVISIBLE
+
             val idWifiIcon: Int = when {
                 //  Wi-Fi signal values got from:
                 //  https://www.metageek.com/training/resources/wifi-signal-strength-basics.html

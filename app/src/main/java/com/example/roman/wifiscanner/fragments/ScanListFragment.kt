@@ -12,6 +12,8 @@ import com.example.roman.wifiscanner.R
 import com.example.roman.wifiscanner.adapters.ScanListAdapter
 import com.example.roman.wifiscanner.interfaces.IScanListFragmentView
 import com.example.roman.wifiscanner.presenters.ScanListPresenter
+import com.example.roman.wifiscanner.wifi.wifidataclass.ISelectedWifiInfo
+import com.example.roman.wifiscanner.wifi.wifidataclass.SelectedWifiInfo
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.hannesdorfmann.mosby3.mvp.MvpFragment
 import kotlinx.android.synthetic.main.fragment_scan_list.*
@@ -57,15 +59,9 @@ class ScanListFragment : MvpFragment<IScanListFragmentView, ScanListPresenter>()
         mAdapter.updateItems(items)
     }
 
-    override fun showNextScreen(item: WifiData) {
-        val wifiData = Bundle()
-        wifiData.putString("ssid", item.ssid)
-        wifiData.putBoolean("isLocked", item.isLocked)
-        wifiData.putInt("signalLevel", item.signalLevel)
-        wifiData.putInt("frequency", item.frequency)
-        val detailsFragment = DetailsWifiFragment.newInstance(wifiData)
+    override fun showNextScreen() {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.container, detailsFragment)
+        fragmentTransaction.replace(R.id.container, DetailsWifiFragment())
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
