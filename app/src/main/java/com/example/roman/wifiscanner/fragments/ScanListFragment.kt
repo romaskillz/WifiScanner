@@ -12,8 +12,6 @@ import com.example.roman.wifiscanner.R
 import com.example.roman.wifiscanner.adapters.ScanListAdapter
 import com.example.roman.wifiscanner.interfaces.IScanListFragmentView
 import com.example.roman.wifiscanner.presenters.ScanListPresenter
-import com.example.roman.wifiscanner.wifi.wifidataclass.ISelectedWifiInfo
-import com.example.roman.wifiscanner.wifi.wifidataclass.SelectedWifiInfo
 import com.example.roman.wifiscanner.wifi.wifidataclass.WifiData
 import com.hannesdorfmann.mosby3.mvp.MvpFragment
 import kotlinx.android.synthetic.main.fragment_scan_list.*
